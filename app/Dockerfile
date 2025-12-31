@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # 2. Configurar directorio de trabajo
-WORKDIR /code
+WORKDIR /app
 
 # 3. Copiar requirements e instalarlos
 COPY requirements.txt .
@@ -23,6 +23,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Copiar el código
 COPY . .
-
-# 5. Comando por defecto
-CMD ["python", "main.py"]

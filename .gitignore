@@ -20,7 +20,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+*.csv
 # --- Entornos Virtuales (si decides usar uno localmente) ---
 venv/
 .env
