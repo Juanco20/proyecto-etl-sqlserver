@@ -10,10 +10,10 @@ services:
     volumes:
       - sql_data:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P TuPasswordFuerte123! -Q 'SELECT 1' || exit 1"]
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P TuPasswordFuerte123! -Q 'SELECT 1' -C || exit 1"]
       interval: 10s
-      retries: 10
-      start_period: 10s
+      retries: 20
+      start_period: 30s
 
   ingesta:
     build: ./app
@@ -21,10 +21,16 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - ./app:/app
+      - ./datos:/datos
     environment:
       - DB_HOST=db
       - DB_USER=sa
       - DB_PASS=TuPasswordFuerte123!
+    command: tail -f /dev/null  # Mantener el contenedor en ejecución para pruebas
 
 volumes:
   sql_data:
+
+ 
