@@ -103,3 +103,5 @@ SELECT * FROM Logs_Errores;
 TRUNCATE TABLE Logs_Errores;
 
 SELECT * FROM Logs_Errores;
+
+## Prueba
